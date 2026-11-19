@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#090909">
+  <meta name="description" content="هدية إلكترونية رومانسية تفاعلية صُنعت خصيصاً لهديل.">
+  <meta property="og:title" content="هديل — هدية صُنعت خصيصاً لكِ ❤️">
+  <meta property="og:description" content="هدية إلكترونية تفاعلية رومانسية صُنعت خصيصاً لهديل.">
+  <meta property="og:type" content="website">
+  <title>هديل — هدية صُنعت خصيصاً لكِ ❤️</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Cairo:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- ============ شاشة البداية ============ -->
+  <section class="intro" id="intro" aria-label="شاشة الترحيب">
+    <div class="intro-stars" id="introStars" aria-hidden="true"></div>
+    <div class="intro-glow" aria-hidden="true"></div>
+    <div class="intro-content">
+      <p class="intro-sub">شيءٌ جميل صُنع خصيصاً لكِ...</p>
+      <h1 class="intro-title">هديل <span class="heart" aria-hidden="true">❤</span></h1>
+      <button class="btn-gold" id="openGift" type="button">افتحي هديتك</button>
+    </div>
+  </section>
+
+  <!-- ============ التجربة ============ -->
+  <main id="experience" class="experience" hidden>
+
+    <!-- الترحيب -->
+    <section class="section hero" aria-label="ترحيب">
+      <div class="hero-sky" id="heroSky" aria-hidden="true"></div>
+      <div class="hero-content">
+        <p class="hero-eyebrow">لهديل، وحدها هديل</p>
+        <h2 class="hero-title">عالَمٌ صغير<br><span class="accent">مصنوعٌ منكِ</span></h2>
+        <p class="hero-text">انزلي ببطء... كلُّ زاويةٍ في هذه الصفحة تهمس باسمك.</p>
+        <div class="scroll-hint" aria-hidden="true"><span></span></div>
+      </div>
+    </section>
+
+    <!-- الرسالة -->
+    <section class="section letter" aria-label="رسالة حب">
+      <h2 class="section-title">رسالةٌ <span class="accent">لكِ</span></h2>
+      <p class="section-sub">اضغطي على الظرف لفتحه</p>
+      <div class="envelope-scene">
+        <button class="envelope" id="envelope" type="button" aria-label="افتحي الرسالة" aria-expanded="false">
+          <div class="envelope-body" aria-hidden="true"></div>
+          <div class="envelope-letter-preview" aria-hidden="true"></div>
+          <div class="envelope-flap" aria-hidden="true"></div>
+          <div class="envelope-seal" aria-hidden="true">❤</div>
+        </button>
+      </div>
+      <div class="letter-card" id="letterCard" aria-live="polite">
+        <div class="letter-inner">
+          <p class="letter-text" id="letterText"></p>
+        </div>
+      </div>
+    </section>
+
+    <!-- الوردة -->
+    <section class="section rose-section" aria-label="وردة">
+      <h2 class="section-title">وردةٌ <span class="accent">لا تذبل</span></h2>
+      <p class="section-sub">مرسومةٌ بالضوء، لا بالبتلات</p>
+      <div class="rose-stage" id="roseStage" aria-hidden="true">
+        <div class="rose">
+          <div class="rose-bloom"></div>
+          <div class="rose-stem"></div>
+          <div class="rose-leaf rose-leaf-1"></div>
+          <div class="rose-leaf rose-leaf-2"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- السماء -->
+    <section class="section stars-section" aria-label="سماء النجوم">
+      <h2 class="section-title">سماؤكِ <span class="accent">ملأى بالنجوم</span></h2>
+      <div class="sky" id="sky" aria-hidden="true"></div>
+      <p class="sky-caption">كلُّ نجمةٍ هنا أمنيةٌ تمنّيتها لكِ.</p>
+    </section>
+
+    <!-- الرسالة المخفية -->
+    <section class="section secret" aria-label="رسالة سرية">
+      <h2 class="section-title">كلمةٌ <span class="accent">مخبّأة</span></h2>
+      <button class="btn-secret" id="secretBtn" type="button" aria-expanded="false">اضغطيني</button>
+      <div class="secret-message" id="secretMessage" aria-live="polite">
+        <p>أنتِ أرقُّ ما حدث لقلبي على الإطلاق.</p>
+        <p class="secret-ar">You are the softest thing that ever happened to my heart.</p>
+      </div>
+    </section>
+
+    <!-- الختام -->
+    <section class="section final" aria-label="الختام">
+      <p class="final-eyebrow">وفي نهاية كلِّ شيء</p>
+      <h2 class="final-title">صُنعت بحبٍّ،<br>خصيصاً من أجل <span class="accent">هديل</span>.</h2>
+      <p class="final-heart" aria-hidden="true">❤</p>
+      <button class="btn-gold" id="replayBtn" type="button">عيشي التجربة من جديد</button>
+    </section>
+
+  </main>
+
+  <!-- زر الموسيقى -->
+  <button class="audio-btn" id="audioBtn" type="button" aria-label="تشغيل الموسيقى" aria-pressed="false">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <path d="M9 18V5l12-2v13"/>
+      <circle cx="6" cy="18" r="3"/>
+      <circle cx="18" cy="16" r="3"/>
+    </svg>
+  </button>
+
+  <div class="hearts-layer" id="heartsLayer" aria-hidden="true"></div>
+
+  <script src="script.js" defer></script>
+</body>
+</html>
