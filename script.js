@@ -169,6 +169,7 @@
   /* ============ الموسيقى ============ */
   const audioBtn = $('#audioBtn');
   let audioCtx = null, masterGain = null, audioNodes = [], audioPlaying = false;
+  let scheduleTimeout = null;
   const CHORDS = [
     [261.63, 329.63, 392.00],
     [220.00, 261.63, 329.63],
@@ -207,10 +208,11 @@
   }
   function scheduleProgression(){
     if(!audioCtx || !audioPlaying) return;
+    if(scheduleTimeout){ clearTimeout(scheduleTimeout); scheduleTimeout = null; }
     let t = audioCtx.currentTime + .1;
     const d = 6;
     for(let i=0;i<CHORDS.length;i++) playChord(CHORDS[i], t + i*d, d + .5);
-    setTimeout(scheduleProgression, (d * CHORDS.length - 1) * 1000);
+    scheduleTimeout = setTimeout(scheduleProgression, (d * CHORDS.length - 1) * 1000);
   }
   audioBtn.addEventListener('click', async () => {
     initAudio();
@@ -226,14 +228,16 @@
       audioBtn.setAttribute('aria-label','إيقاف الموسيقى');
     } else {
       audioPlaying = false;
+      if(scheduleTimeout){ clearTimeout(scheduleTimeout); scheduleTimeout = null; }
       masterGain.gain.cancelScheduledValues(audioCtx.currentTime);
       masterGain.gain.setValueAtTime(masterGain.gain.value, audioCtx.currentTime);
       masterGain.gain.linearRampToValueAtTime(0, audioCtx.currentTime + .8);
       audioBtn.setAttribute('aria-pressed','false');
       audioBtn.setAttribute('aria-label','تشغيل الموسيقى');
+      const oldNodes = audioNodes;
+      audioNodes = [];
       setTimeout(() => {
-        audioNodes.forEach(n => { try{ n.stop(); }catch(e){} });
-        audioNodes = [];
+        oldNodes.forEach(n => { try{ n.stop(); }catch(e){} });
       }, 900);
     }
   });
