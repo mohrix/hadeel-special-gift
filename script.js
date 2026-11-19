@@ -119,6 +119,29 @@
     rose.classList.add('is-blooming');
   }
 
+  /* ============ تفاعل الوردة ============ */
+  const roseBtn = $('#roseBtn');
+  const roseWhisper = $('#roseWhisper');
+  let roseTouches = 0;
+  if(roseBtn && rose){
+    roseBtn.addEventListener('click', () => {
+      roseTouches++;
+      rose.classList.add('is-blooming');
+      rose.classList.remove('rose-loved');
+      void rose.offsetWidth;
+      rose.classList.add('rose-loved');
+      roseBtn.setAttribute('aria-pressed','true');
+      const notes = [
+        'كل بتلة في هذه الوردة تذكّركِ بأنكِ تستحقين الجمال يا هديل. ❤️',
+        'لو كان للحنان شكل، لاختار أن يكون وردةً تشبهكِ. 🌹',
+        'هذه الوردة لا تحتاج إلى ماء... يكفيها أن تبقى ابتسامتكِ بخير. ✨',
+        'وفي كل مرة تلمسينها، تتفتح أمنية جديدة لكِ. 💗'
+      ];
+      if(roseWhisper) roseWhisper.textContent = notes[(roseTouches - 1) % notes.length];
+      spawnHeartBurst(roseTouches % 2 ? 9 : 14);
+    });
+  }
+
   /* ============ الرسالة المخفية ============ */
   const secretBtn = $('#secretBtn');
   const secretMsg = $('#secretMessage');
@@ -252,6 +275,10 @@
     letterText.textContent = '';
     letterText.classList.remove('is-typing');
     secretMsg.classList.remove('is-visible');
+    if(rose){ rose.classList.remove('is-blooming','rose-loved'); }
+    if(roseBtn){ roseBtn.setAttribute('aria-pressed','false'); roseBtn.textContent='اضغطيني 🌹'; }
+    if(roseWhisper){ roseWhisper.textContent='هذه الوردة لكِ يا هديل... وكلما لمستِها تفتّحت أكثر.'; }
+
     secretBtn.setAttribute('aria-expanded','false');
     secretBtn.textContent = 'اضغطيني';
     window.scrollTo({top:0, behavior:'smooth'});

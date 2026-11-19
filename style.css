@@ -414,3 +414,41 @@ button:active{transform:scale(.97);}
   .audio-btn{width:46px;height:46px;bottom:1rem;left:1rem;}
   .envelope{width:min(280px,82vw);}
 }
+
+
+/* ============ الوردة الجديدة: بتلات SVG متدرجة ============ */
+.rose-section{padding-bottom:5rem}
+.rose-stage{height:clamp(360px,65vh,510px);min-height:360px;overflow:visible}
+.rose{position:relative;width:min(320px,82vw);height:430px;filter:drop-shadow(0 18px 30px rgba(230,57,91,.24));isolation:isolate}
+.rose-art{width:100%;height:100%;overflow:visible}
+.rose .bloom{transform-origin:160px 135px;transform:scale(.12) rotate(-18deg);opacity:0;transition:transform 1.8s cubic-bezier(.2,1.35,.35,1),opacity .8s ease}
+.rose.is-blooming .bloom{transform:scale(1) rotate(0);opacity:1}
+.rose .petal{transform-box:fill-box;transform-origin:center;stroke:#ff9bad;stroke-opacity:.38;stroke-width:1.5}
+.rose.is-blooming .p1{animation:petalOpen 1.2s .1s both}
+.rose.is-blooming .p2{animation:petalOpen 1.2s .18s both}
+.rose.is-blooming .p3{animation:petalOpen 1.2s .26s both}
+.rose.is-blooming .p4{animation:petalOpen 1.2s .34s both}
+.rose.is-blooming .p5{animation:petalOpen 1.2s .42s both}
+.rose.is-blooming .p6{animation:petalOpen 1.2s .5s both}
+.rose.is-blooming .p7{animation:petalOpen 1.2s .58s both}
+.rose.is-blooming .p8{animation:petalOpen 1.2s .66s both}
+@keyframes petalOpen{from{filter:brightness(.68);transform:scale(.72)}to{filter:brightness(1);transform:scale(1)}}
+.rose .stem-draw{stroke-dasharray:260;stroke-dashoffset:260;transition:stroke-dashoffset 1.7s .35s ease}
+.rose.is-blooming .stem-draw{stroke-dashoffset:0}
+.rose .leaf-draw{transform-box:fill-box;opacity:0;transition:opacity .7s 1s,transform 1.1s 1s cubic-bezier(.2,1.4,.4,1)}
+.leaf-left{transform-origin:right center;transform:scale(0) rotate(-20deg)}
+.leaf-right{transform-origin:left center;transform:scale(0) rotate(20deg)}
+.rose.is-blooming .leaf-draw{opacity:1;transform:scale(1) rotate(0)}
+.rose .leaf-vein{stroke-dasharray:100;stroke-dashoffset:100;transition:stroke-dashoffset 1.1s 1.4s ease}
+.rose.is-blooming .leaf-vein{stroke-dashoffset:0}
+.rose-sparkle{position:absolute;color:#ffe6a8;text-shadow:0 0 12px #ffd36b;opacity:0;pointer-events:none}
+.sparkle-one{top:18%;left:8%;font-size:25px}
+.sparkle-two{top:35%;right:7%;font-size:19px}
+.rose.is-blooming .rose-sparkle{animation:sparkleFloat 2.8s ease-in-out infinite}
+.rose.is-blooming .sparkle-two{animation-delay:.8s}
+@keyframes sparkleFloat{0%,100%{opacity:.15;transform:translateY(5px) scale(.7)}50%{opacity:1;transform:translateY(-8px) scale(1.2)}}
+.btn-rose{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;min-height:54px;padding:.7rem 2rem;margin-top:-.5rem;border:1px solid rgba(230,57,91,.75);border-radius:999px;background:linear-gradient(135deg,rgba(135,13,46,.75),rgba(230,57,91,.2));color:#ffe8e9;font-weight:700;font-size:1.05rem;box-shadow:0 0 24px rgba(230,57,91,.15);transition:transform .3s,box-shadow .3s,background .3s}
+.btn-rose:hover{transform:translateY(-3px);box-shadow:0 0 32px rgba(230,57,91,.4)}
+.btn-rose:focus-visible{outline:2px solid var(--gold);outline-offset:5px}
+.rose-whisper{max-width:440px;margin:1.1rem auto 0;color:var(--muted);font-family:var(--font-serif);font-size:1.15rem;opacity:.9}
+@media(prefers-reduced-motion:reduce){.rose *,.btn-rose{animation:none!important;transition:none!important}.rose .bloom{transform:scale(1);opacity:1}.rose .stem-draw{stroke-dashoffset:0}.rose .leaf-draw{opacity:1;transform:none}}
